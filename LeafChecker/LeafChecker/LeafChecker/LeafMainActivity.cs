@@ -100,7 +100,7 @@ namespace LeafChecker {
                 intent.PutExtra("json", json);
             }
             else
-                intent = new Intent(this, typeof(LeafRecognition));
+                intent = new Intent(this, typeof(NotRecognize));
 
             StartActivity(intent);
         }

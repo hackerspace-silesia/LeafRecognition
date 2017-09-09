@@ -10,4 +10,5 @@
   <string name="lookTrees">ZNAJDŹ DRZEWA</string>
   <string name="manual">1. Znajdź liść\n2. Zrób mu zdjęcie\n3. Załaduj zdjęcie\n4. Dowiedz się jakie to drzewo!</string>
   <string name="isLimes">Czy to lipa?</string>
+  <string name="percent">To na 80% lipa.</string>
 </resources>

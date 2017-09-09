@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
+using Android.Content.Res;
+using Android.Graphics.Drawables;
 
 namespace LeafChecker {
 
@@ -18,7 +20,7 @@ namespace LeafChecker {
         public string percent { get; set; }
     }
 
-    [Activity(Label = "LeafRecognition", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
+    [Activity(Label = "LeafRecognition", Theme= "@style/Theme.Custom")]
     public class LeafRecognition : Activity {
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
@@ -26,10 +28,15 @@ namespace LeafChecker {
             string json = Intent.GetStringExtra("json");
 
             var leaf = JsonConvert.DeserializeObject<Leaf>(json);
-            TextView text = FindViewById<TextView>(Resource.Id.name);
-            text.Text = leaf.Name;
-            TextView percentText = FindViewById<TextView>(Resource.Id.percent);
-            percentText.Text = leaf.percent;
+            TextView text = FindViewById<TextView>(Resource.Id.percent);
+            text.Text = string.Format("To na {0}% {1}", leaf.percent, leaf.Name);
+            ImageView image = FindViewById<ImageView>(Resource.Id.leafImg);
+
+            var drawableImage = Resources.GetDrawable(Resources.GetIdentifier(leaf.Name, "drawable", PackageName));
+            var bitmap = (drawableImage as BitmapDrawable).Bitmap;
+            if (bitmap != null) {
+                image.SetImageBitmap(bitmap);
+            }
         }
     }
 }
