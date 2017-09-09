@@ -9,7 +9,7 @@ using System.Text;
 namespace Provider {
     public class CustomHttpClient {
 
-        public void UploadImage(string path) {
+        public string UploadImage(string path) {
             //variable
             var url = "http://155.158.2.55:8080/";
             var file = path;
@@ -27,11 +27,12 @@ namespace Provider {
                     client.PostAsync(url, content);
                 string responseBody = ContentToString(response.Result.Content);
                 Console.WriteLine("RESPONSE: " + responseBody);
+                return responseBody;
 
             }
             catch (Exception e) {
                 Console.WriteLine(e.Message);
-                return;
+                return string.Empty;
             }
         }
 
@@ -39,7 +40,5 @@ namespace Provider {
             var readAsStringAsync = httpContent.ReadAsStringAsync();
             return readAsStringAsync.Result;
         }
-
-
     }
 }
