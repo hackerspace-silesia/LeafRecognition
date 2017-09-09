@@ -2,10 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/MyButton"
-        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="@drawable/trees">
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Hello" />
+        android:layout_gravity="center"
+        android:layout_marginTop="148.0dp"
+        android:text="@string/appName"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFFFF" />
+    <TextView
+        android:id="@+id/appDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40.0dp"
+        android:text="@string/appDescription"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#FFFFFFFF" />
 </LinearLayout>

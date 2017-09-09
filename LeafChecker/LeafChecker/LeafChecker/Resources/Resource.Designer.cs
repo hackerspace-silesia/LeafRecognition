@@ -47,6 +47,9 @@ namespace LeafChecker
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int trees = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -63,11 +66,20 @@ namespace LeafChecker
 			// aapt resource value: 0x7f050000
 			public const int MyButton = 2131034112;
 			
-			// aapt resource value: 0x7f050002
-			public const int myImageView = 2131034114;
+			// aapt resource value: 0x7f050005
+			public const int appDescription = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int appName = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int myImageView = 2131034115;
 			
 			// aapt resource value: 0x7f050001
-			public const int testView = 2131034113;
+			public const int photoButton = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int testView = 2131034114;
 			
 			static Id()
 			{
@@ -106,6 +118,18 @@ namespace LeafChecker
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040005
+			public const int appDescription = 2130968581;
+			
+			// aapt resource value: 0x7f040004
+			public const int appName = 2130968580;
+			
+			// aapt resource value: 0x7f040003
+			public const int loadImage = 2130968579;
+			
+			// aapt resource value: 0x7f040002
+			public const int openCamera = 2130968578;
 			
 			static String()
 			{

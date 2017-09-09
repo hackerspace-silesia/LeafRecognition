@@ -5,9 +5,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Graphics;
 
 namespace LeafChecker {
-    [Activity(Label = "LeafChecker", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "LeafChecker", MainLauncher = true, Icon = "@drawable/icon", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity {
         int count = 5;
 
@@ -18,15 +19,24 @@ namespace LeafChecker {
 
             SetContentView(Resource.Layout.Main);
 
+            var textView = FindViewById<TextView>(Resource.Id.appName);
+            Typeface tf = Typeface.CreateFromAsset(Assets, "futura.TTF");
+            textView.SetTypeface(tf, TypefaceStyle.Normal);
+
+            var textDescription = FindViewById<TextView>(Resource.Id.appDescription);
+            Typeface tfDescription = Typeface.CreateFromAsset(Assets, "LATO-BOLD.TTF");
+            textDescription.SetTypeface(tfDescription, TypefaceStyle.Normal);
+
+
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            //Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-            button.Click += delegate {
-                Intent intent = new Intent(this, typeof(LeafMainActivity));
-                intent.PutExtra("clicks", count);
-                StartActivity(intent);
-            };
+            //button.Click += delegate {
+            //    Intent intent = new Intent(this, typeof(LeafMainActivity));
+            //    intent.PutExtra("clicks", count);
+            //    StartActivity(intent);
+            //};
         }
     }
 }

@@ -7,16 +7,20 @@
         android:id="@+id/MyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Hello" />
+        android:text="@string/loadImage" />
+    <Button
+        android:id="@+id/photoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/openCamera" />
     <TextView
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/testView" />
-  <ImageView
-     android:id="@+id/myImageView"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"/>
-
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
