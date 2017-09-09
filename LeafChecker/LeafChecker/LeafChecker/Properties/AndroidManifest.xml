@@ -3,5 +3,5 @@
   <uses-sdk android:minSdkVersion="16" />
   <application android:label="LeafChecker"></application>
   <uses-permission android:name="android.permission.INTERNET" />
-
+  <uses-permission android:name="android.permission.CAMERA" />
 </manifest>

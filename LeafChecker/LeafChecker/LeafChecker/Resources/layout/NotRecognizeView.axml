@@ -3,54 +3,40 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/trees">
-    <ImageView
-        android:id="@+id/photoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:background="@drawable/Los"
+    android:minWidth="25px"
+    android:minHeight="25px">
     <TextView
-        android:id="@+id/isLimes"
+        android:id="@+id/noLimes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="148.0dp"
-        android:text="@string/isLimes"
+        android:text="@string/noLimes"
         android:textSize="45dp"
         android:textStyle="bold"
         android:textColor="#FFFFFFFF" />
     <TextView
-        android:id="@+id/manual"
+        android:id="@+id/stupid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50.0dp"
-        android:text="@string/manual"
-        android:lineSpacingExtra="10dp"
+        android:layout_marginTop="250.0dp"
+        android:text="@string/stupid"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textAlignment="gravity"
-        android:gravity="left"
+        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="#FFFFFFFF" />
     <Button
-        android:id="@+id/madePhotoBtn"
-        android:text="@string/openCamera"
+        android:text="@string/lookTrees"
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="#FFFFFFFF"
-        android:layout_marginTop="190.0dp"
+        android:layout_marginTop="70.0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/findAnother"
         android:background="@drawable/button"
         android:layout_gravity="center" />
-<!--<Button
-        android:id="@+id/getPhotoBtn"
-        android:text="@string/loadImage"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFFFF"
-        android:layout_marginTop="10.0dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:layout_gravity="center" />-->
 </LinearLayout>

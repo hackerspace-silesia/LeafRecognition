@@ -31,13 +31,13 @@ namespace LeafChecker {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.LeafMainLayout);
 
-            getPhotoBtn = FindViewById<Button>(Resource.Id.getPhotoBtn);
+          //  getPhotoBtn = FindViewById<Button>(Resource.Id.getPhotoBtn);
             createPhotoBtn = FindViewById<Button>(Resource.Id.madePhotoBtn);
             imageView = FindViewById<ImageView>(Resource.Id.photoView);
 
-            this.getPhotoBtn.Click += delegate {
-                GetPhoto();
-            };
+           // this.getPhotoBtn.Click += delegate {
+           //     GetPhoto();
+           // };
             InitTakingPhoto();
         }
 
@@ -71,9 +71,7 @@ namespace LeafChecker {
             imageView.SetImageURI(data.Data);
             CustomHttpClient client = new CustomHttpClient();
             string json = client.UploadImage(data.Data.Path);
-            Intent intent = new Intent(this, typeof(LeafRecognition));
-            intent.PutExtra("json", json);
-            StartActivity(intent);
+            ChangeActivity(json);
         }
 
         private void ShowAndSendPhoto() {
@@ -89,12 +87,22 @@ namespace LeafChecker {
                 imageView.SetImageBitmap(App.bitmap);
                 CustomHttpClient client = new CustomHttpClient();
                 string json = client.UploadImage(App._file.Path);
-                Intent intent = new Intent(this, typeof(LeafRecognition));
-                intent.PutExtra("json", json);
-                StartActivity(intent);
+                ChangeActivity(json);
                 App.bitmap = null;
             }
             GC.Collect();
+        }
+
+        private void ChangeActivity(string json) {
+            Intent intent;
+            if (!json.Contains("wszystkoinne")) {
+                intent = new Intent(this, typeof(LeafRecognition));
+                intent.PutExtra("json", json);
+            }
+            else
+                intent = new Intent(this, typeof(LeafRecognition));
+
+            StartActivity(intent);
         }
 
         private void TakeAPicture(object sender, EventArgs eventArgs) {

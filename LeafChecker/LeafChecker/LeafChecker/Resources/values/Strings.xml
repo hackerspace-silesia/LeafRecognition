@@ -5,4 +5,9 @@
   <string name="loadImage">DODAJ ZDJĘCIE</string>
   <string name="appName">DRZEWOSKAN</string>
   <string name="appDescription">Drzewoskan to aplikacja \nułatwiająca rozpoznawanie drzew \npo zdjęciach ich liści.</string>
+  <string name="noLimes">Nie ma lipy...</string>
+  <string name="stupid">Widać, że nie uważałeś na biologii.\nZrób jeszcze raz zdjęcie liścia.</string>
+  <string name="lookTrees">ZNAJDŹ DRZEWA</string>
+  <string name="manual">1. Znajdź liść\n2. Zrób mu zdjęcie\n3. Załaduj zdjęcie\n4. Dowiedz się jakie to drzewo!</string>
+  <string name="isLimes">Czy to lipa?</string>
 </resources>
