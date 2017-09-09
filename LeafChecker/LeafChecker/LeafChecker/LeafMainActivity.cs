@@ -70,7 +70,10 @@ namespace LeafChecker {
         private void ShowChososenPhoto(Intent data) {
             imageView.SetImageURI(data.Data);
             CustomHttpClient client = new CustomHttpClient();
-            client.UploadImage(data.Data.Path);
+            string json = client.UploadImage(data.Data.Path);
+            Intent intent = new Intent(this, typeof(LeafRecognition));
+            intent.PutExtra("json", json);
+            StartActivity(intent);
         }
 
         private void ShowAndSendPhoto() {
@@ -85,7 +88,10 @@ namespace LeafChecker {
             if (App.bitmap != null) {
                 imageView.SetImageBitmap(App.bitmap);
                 CustomHttpClient client = new CustomHttpClient();
-                client.UploadImage(App._file.Path);
+                string json = client.UploadImage(App._file.Path);
+                Intent intent = new Intent(this, typeof(LeafRecognition));
+                intent.PutExtra("json", json);
+                StartActivity(intent);
                 App.bitmap = null;
             }
             GC.Collect();
