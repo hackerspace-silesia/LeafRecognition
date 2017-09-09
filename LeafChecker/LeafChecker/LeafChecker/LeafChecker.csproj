@@ -45,6 +45,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -62,6 +63,7 @@
     <AndroidResource Include="Resources\layout\LeafMainLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -87,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Provider\Provider.csproj">
+      <Project>{f3f9be56-f255-40df-958c-aad3263d4697}</Project>
+      <Name>Provider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Graphics;
+using System.Net.Http;
 
 namespace LeafChecker {
     [Activity(Label = "LeafChecker", MainLauncher = true, Icon = "@drawable/icon", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
@@ -14,11 +15,9 @@ namespace LeafChecker {
 
         protected override void OnCreate(Bundle bundle) {
             base.OnCreate(bundle);
-
             // Set our view from the "main" layout resource
 
             SetContentView(Resource.Layout.Main);
-
             var textView = FindViewById<TextView>(Resource.Id.appName);
             Typeface tf = Typeface.CreateFromAsset(Assets, "futura.TTF");
             textView.SetTypeface(tf, TypefaceStyle.Normal);

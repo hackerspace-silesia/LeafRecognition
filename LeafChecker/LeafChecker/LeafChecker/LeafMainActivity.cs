@@ -18,6 +18,7 @@ using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using CameraAppDemo;
 using System.Net.Http;
+using Provider;
 
 namespace LeafChecker {
     [Activity(Label = "LeafMainActivity")]
@@ -43,8 +44,7 @@ namespace LeafChecker {
 
             if (IsThereAnAppToTakePictures()) {
                 CreateDirectoryForPictures();
-                var imageView =
-                                    FindViewById<ImageView>(Resource.Id.myImageView);
+                var imageView = FindViewById<ImageView>(Resource.Id.myImageView);
                 Button photoBtn = FindViewById<Button>(Resource.Id.photoButton);
                 imageView = FindViewById<ImageView>(Resource.Id.myImageView);
                 button.Click += TakeAPicture;
@@ -62,6 +62,8 @@ namespace LeafChecker {
                 var exifInterface = new ExifInterface(data.Data.Path);
                 string orientation = exifInterface.GetAttribute(ExifInterface.TagOrientation.ToString());
                 text.Text = orientation.ToString();
+                CustomHttpClient client = new CustomHttpClient();
+                client.UploadImage(data.Data.Path);
             }
 
             if (requestCode == 1 && resultCode == Result.Ok) {
@@ -73,18 +75,16 @@ namespace LeafChecker {
                 mediaScanIntent.SetData(contentUri);
                 SendBroadcast(mediaScanIntent);
 
-                // Display in ImageView. We will resize the bitmap to fit the display.
-                // Loading the full sized image will consume to much memory
-                // and cause the application to crash.
-
                 int height = Resources.DisplayMetrics.HeightPixels;
                 int width = imageView.Height;
                 App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
                 if (App.bitmap != null) {
                     imageView.SetImageBitmap(App.bitmap);
+                    CustomHttpClient client = new CustomHttpClient();
+                    client.UploadImage(App._file.Path);
                     App.bitmap = null;
                 }
-
+               
                 // Dispose of the Java side bitmap.
                 GC.Collect();
             }
