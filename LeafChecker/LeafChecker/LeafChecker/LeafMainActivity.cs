@@ -21,73 +21,74 @@ using System.Net.Http;
 using Provider;
 
 namespace LeafChecker {
-    [Activity(Label = "LeafMainActivity")]
+    [Activity(Label = "LeafMainActivity", Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class LeafMainActivity : Activity {
         TextView text;
-
+        Button getPhotoBtn;
+        Button createPhotoBtn;
+        ImageView imageView;
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.LeafMainLayout);
-            int counts = Intent.GetIntExtra("clicks", 0);
-            var button = FindViewById(Resource.Id.MyButton);
-            text = FindViewById<TextView>(Resource.Id.testView);
-            text.Text = counts.ToString();
 
-            //button.Click += delegate {
-            //    var imageIntent = new Intent();
-            //    imageIntent.SetType("image/*");
-            //    imageIntent.SetAction(Intent.ActionGetContent);
-            //    StartActivityForResult(
-            //        Intent.CreateChooser(imageIntent, "Select photo"), 0);
-            //};
+            getPhotoBtn = FindViewById<Button>(Resource.Id.getPhotoBtn);
+            createPhotoBtn = FindViewById<Button>(Resource.Id.madePhotoBtn);
+            imageView = FindViewById<ImageView>(Resource.Id.photoView);
 
+            this.getPhotoBtn.Click += delegate {
+                GetPhoto();
+            };
+            InitTakingPhoto();
+        }
+
+        private void InitTakingPhoto() {
             if (IsThereAnAppToTakePictures()) {
                 CreateDirectoryForPictures();
-                var imageView = FindViewById<ImageView>(Resource.Id.myImageView);
-                Button photoBtn = FindViewById<Button>(Resource.Id.photoButton);
-                imageView = FindViewById<ImageView>(Resource.Id.myImageView);
-                button.Click += TakeAPicture;
+                createPhotoBtn.Click += TakeAPicture;
             }
 
         }
 
+        private void GetPhoto() {
+            var imageIntent = new Intent();
+            imageIntent.SetType("image/*");
+            imageIntent.SetAction(Intent.ActionGetContent);
+            StartActivityForResult(
+                Intent.CreateChooser(imageIntent, "Select photo"), 0);
+        }
+
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
             base.OnActivityResult(requestCode, resultCode, data);
-            var imageView =
-                               FindViewById<ImageView>(Resource.Id.myImageView);
             if (resultCode == Result.Ok && requestCode == 0) {
-
-                imageView.SetImageURI(data.Data);
-                var exifInterface = new ExifInterface(data.Data.Path);
-                string orientation = exifInterface.GetAttribute(ExifInterface.TagOrientation.ToString());
-                text.Text = orientation.ToString();
-                CustomHttpClient client = new CustomHttpClient();
-                client.UploadImage(data.Data.Path);
+                ShowChososenPhoto(data);
             }
-
             if (requestCode == 1 && resultCode == Result.Ok) {
-
-                // Make it available in the gallery
-
-                Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-                Uri contentUri = Uri.FromFile(App._file);
-                mediaScanIntent.SetData(contentUri);
-                SendBroadcast(mediaScanIntent);
-
-                int height = Resources.DisplayMetrics.HeightPixels;
-                int width = imageView.Height;
-                App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
-                if (App.bitmap != null) {
-                    imageView.SetImageBitmap(App.bitmap);
-                    CustomHttpClient client = new CustomHttpClient();
-                    client.UploadImage(App._file.Path);
-                    App.bitmap = null;
-                }
-               
-                // Dispose of the Java side bitmap.
-                GC.Collect();
+                ShowAndSendPhoto();
             }
+        }
+
+        private void ShowChososenPhoto(Intent data) {
+            imageView.SetImageURI(data.Data);
+            CustomHttpClient client = new CustomHttpClient();
+            client.UploadImage(data.Data.Path);
+        }
+
+        private void ShowAndSendPhoto() {
+            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            Uri contentUri = Uri.FromFile(App._file);
+            mediaScanIntent.SetData(contentUri);
+            SendBroadcast(mediaScanIntent);
+
+            int height = Resources.DisplayMetrics.HeightPixels;
+            int width = imageView.Height;
+            App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
+            if (App.bitmap != null) {
+                imageView.SetImageBitmap(App.bitmap);
+                CustomHttpClient client = new CustomHttpClient();
+                client.UploadImage(App._file.Path);
+                App.bitmap = null;
+            }
+            GC.Collect();
         }
 
         private void TakeAPicture(object sender, EventArgs eventArgs) {

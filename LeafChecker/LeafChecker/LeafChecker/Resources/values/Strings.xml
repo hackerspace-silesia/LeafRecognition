@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">LeafChecker</string>
-  <string name="openCamera">Open Camera</string>
-  <string name="loadImage">Load Image</string>
+  <string name="ApplicationName">LeafChecker</string>
+  <string name="openCamera">ZRÓB ZDJĘCIE</string>
+  <string name="loadImage">DODAJ ZDJĘCIE</string>
   <string name="appName">DRZEWOSKAN</string>
   <string name="appDescription">Drzewoskan to aplikacja \nułatwiająca rozpoznawanie drzew \npo zdjęciach ich liści.</string>
 </resources>

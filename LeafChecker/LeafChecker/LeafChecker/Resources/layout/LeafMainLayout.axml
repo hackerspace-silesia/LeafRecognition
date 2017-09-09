@@ -2,25 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/MyButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/loadImage" />
-    <Button
-        android:id="@+id/photoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/openCamera" />
-    <TextView
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/testView" />
+    android:layout_height="match_parent"
+    android:background="@drawable/trees2mobile">
     <ImageView
-        android:id="@+id/myImageView"
+        android:id="@+id/photoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/madePhotoBtn"
+        android:text="@string/openCamera"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFFFF"
+        android:layout_marginTop="500.0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_gravity="center" />
+    <Button
+        android:id="@+id/getPhotoBtn"
+        android:text="@string/loadImage"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFFFF"
+        android:layout_marginTop="10.0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_gravity="center" />
 </LinearLayout>
