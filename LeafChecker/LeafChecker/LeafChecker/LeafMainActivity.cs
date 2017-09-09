@@ -17,6 +17,7 @@ using Android.Graphics;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using CameraAppDemo;
+using System.Net.Http;
 
 namespace LeafChecker {
     [Activity(Label = "LeafMainActivity")]
@@ -56,7 +57,7 @@ namespace LeafChecker {
             var imageView =
                                FindViewById<ImageView>(Resource.Id.myImageView);
             if (resultCode == Result.Ok && requestCode == 0) {
-               
+
                 imageView.SetImageURI(data.Data);
                 var exifInterface = new ExifInterface(data.Data.Path);
                 string orientation = exifInterface.GetAttribute(ExifInterface.TagOrientation.ToString());
@@ -112,7 +113,6 @@ namespace LeafChecker {
                 PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
             return availableActivities != null && availableActivities.Count > 0;
         }
-
     }
 
     public static class App {

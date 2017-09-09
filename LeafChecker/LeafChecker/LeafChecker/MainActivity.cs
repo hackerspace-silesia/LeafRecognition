@@ -30,13 +30,13 @@ namespace LeafChecker {
 
             // Get our button from the layout resource,
             // and attach an event to it
-            //Button button = FindViewById<Button>(Resource.Id.MyButton);
+            Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-            //button.Click += delegate {
-            //    Intent intent = new Intent(this, typeof(LeafMainActivity));
-            //    intent.PutExtra("clicks", count);
-            //    StartActivity(intent);
-            //};
+            button.Click += delegate {
+                Intent intent = new Intent(this, typeof(LeafMainActivity));
+                intent.PutExtra("clicks", count);
+                StartActivity(intent);
+            };
         }
     }
 }
